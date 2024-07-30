@@ -1,6 +1,6 @@
 function notifyDeveloperJoin()
     local Players = game:GetService("Players")
-    local userId = 7038650395
+    local userId = 7139298780
     local developerJoined = false
 
     local function checkDeveloperJoin(player)
