@@ -1,13 +1,13 @@
-function notifyDeveloperJoin()
+function notifyDesirableJoin()
     local Players = game:GetService("Players")
-    local userId = 7139298780
-    local developerJoined = false
+    local userIds = {7139298780}
+    local desirableJoined = false
 
-    local function checkDeveloperJoin(player)
-        if player.UserId == userId and not developerJoined then
-            developerJoined = true
+    local function checkDesirableJoin(player)
+        if table.find(userIds, player.UserId) and not desirableJoined then
+            desirableJoined = true
             Fluent:Notify({
-                Title = "vital.wtf developer detected",
+                Title = "vital.wtf desirable detected",
                 Content = player.Name .. " has joined the server",
                 Duration = 120
             })
@@ -15,23 +15,22 @@ function notifyDeveloperJoin()
     end
 
     for _, player in ipairs(Players:GetPlayers()) do
-        if player.UserId == userId then
-            checkDeveloperJoin(player)
+        if table.find(userIds, player.UserId) then
+            checkDesirableJoin(player)
         end
     end
 
-    Players.PlayerAdded:Connect(checkDeveloperJoin)
+    Players.PlayerAdded:Connect(checkDesirableJoin)
 
     while true do
         wait(30)
-        if not developerJoined then
+        if not desirableJoined then
             for _, player in ipairs(Players:GetPlayers()) do
-                if player.UserId == userId then
-                    checkDeveloperJoin(player)
+                if table.find(userIds, player.UserId) then
+                    checkDesirableJoin(player)
                     break
                 end
             end
         end
     end
 end
-
