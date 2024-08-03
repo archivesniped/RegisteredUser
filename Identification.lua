@@ -1,6 +1,6 @@
 function notifyDesirableJoin()
     local Players = game:GetService("Players")
-local userIds = [19, 7139298780]
+local userIds = [19, 7139298780, 7095321934]
     local desirableJoined = false
 
     local function checkDesirableJoin(player)
